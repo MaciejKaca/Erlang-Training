@@ -1,5 +1,5 @@
 -module(myModule).
--export([add/2,temperature/2,newTemperature/2, displayElements/2]).
+-export([add/2,temperature/2,newTemperature/2, displayElements/2, evenNumbers/1]).
 add(A,B) ->
 	A + B.
 temperature(Scale, Temperature) ->
@@ -19,17 +19,10 @@ newTemperature(Scale, Temperature) ->
 			uknown_scale
 	end.
 
-%displayList(List, Element) ->
-%	if Element == 0 ->
-%		lists:nth(0,List);
-%	true ->
-%		lists:nth(List, Element)
-%		displayList(List, Element - 1)
-%	end.
-
-
-displayElements(Element, List) when Element == 1 -> lists:nth(1, List);
 displayElements(Element, List) when Element > 1 ->
 	io:fwrite("~w~n",[lists:nth(Element, List)]),
 	displayElements(Element - 1, List).
+
+evenNumbers(List) ->
+	[Number || Number <- List, Number rem 2 =:= 0].
 	
